@@ -15,17 +15,43 @@
       align-items: center;
     }
 
-    video {
-      width: 80%;
-      max-width: 800px;
-      filter: drop-shadow(0 0 50px #ff89ff);
+button {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: rgba(0,0,0,0.85);
     }
   </style>
 </head>
 <body>
-  <video controls autoplay loop>
-    <source src="/media/gnd.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+
+  <div class="video-wrapper">
+    <video id="vid" autoplay muted>
+      <source src="/media/gnd.mp4" type="video/mp4" />
+    </video>
+
+    <button id="muteBtn">unmutd</button>
+  </div>
+
+  <script>
+    const video = document.getElementById('vid');
+    const btn = document.getElementById('muteBtn');
+
+    btn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      btn.textContent = video.muted ? 'Unmute' : 'Mute';
+    });
+  </script>
+
 </body>
 </html>
