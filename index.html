@@ -15,42 +15,47 @@
       align-items: center;
     }
 
-button {
+    .wrapper {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    video {
+      width: 100%;
+      filter: drop-shadow(0 0 50px #ff89ff);
+    }
+
+    button {
       position: absolute;
-      bottom: 12px;
-      right: 12px;
+      bottom: 16px;
+      right: 16px;
       padding: 8px 12px;
       border: none;
       border-radius: 6px;
       background: rgba(0,0,0,0.7);
       color: #fff;
       cursor: pointer;
-      font-size: 14px;
-    }
-
-    button:hover {
-      background: rgba(0,0,0,0.85);
     }
   </style>
 </head>
 <body>
 
-  <div class="video-wrapper">
-    <video id="vid" autoplay muted>
+  <div class="wrapper">
+    <video id="vid" autoplay muted loop playsinline>
       <source src="/media/gnd.mp4" type="video/mp4" />
     </video>
-
-    <button id="muteBtn">unmutd</button>
+    <button id="btn">Unmute</button>
   </div>
 
   <script>
-    const video = document.getElementById('vid');
-    const btn = document.getElementById('muteBtn');
+    const v = document.getElementById('vid');
+    const b = document.getElementById('btn');
 
-    btn.addEventListener('click', () => {
-      video.muted = !video.muted;
-      btn.textContent = video.muted ? 'Unmute' : 'Mute';
-    });
+    b.onclick = () => {
+      v.muted = !v.muted;
+      b.textContent = v.muted ? 'Unmute' : 'Mute';
+    };
   </script>
 
 </body>
